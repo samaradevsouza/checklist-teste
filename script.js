@@ -5,7 +5,6 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let clientes = [];
 let itensChecklist = [];
 
-// Função para carregar cliente
 async function carregarClientePorNome(nome) {
     if (!nome) return;
 
@@ -40,14 +39,12 @@ async function carregarClientePorNome(nome) {
     }
 }
 
-// Evento no formulário de busca
 document.getElementById("formularioBusca").addEventListener("submit", (e) => {
     e.preventDefault();
     const nome = document.getElementById("nomeCliente").value.trim();
     carregarClientePorNome(nome);
 });
 
-// Adicionar item no checklist
 function adicionarItem() {
     const container = document.getElementById("itens");
     const div = document.createElement("div");
@@ -71,13 +68,11 @@ function adicionarItem() {
     container.appendChild(div);
 }
 
-// Remover item
 function removerItem(botao) {
     const item = botao.parentElement;
     item.remove();
 }
 
-// Gerar resultado
 function gerarResultado() {
     const lista = document.getElementById("listaFinal");
     lista.innerHTML = "";
@@ -112,7 +107,6 @@ function gerarResultado() {
     document.getElementById("resultado").style.display = "block";
 }
 
-// Exportar para Word (.doc)
 function exportarWord() {
     const nome = document.getElementById("nome").textContent;
     const endereco = document.getElementById("endereco").textContent;
@@ -124,7 +118,6 @@ function exportarWord() {
     const tipoProcesso = document.getElementById("tipoProcesso").value;
     const atividadeEnvio = document.getElementById("atividadeEnvio").value;
 
-    // Coloque sua logo convertida em Base64 (PNG ou JPG)
     const logoBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...";
 
     let conteudo = `<html xmlns:o='urn:schemas-microsoft-com:office:office' 
